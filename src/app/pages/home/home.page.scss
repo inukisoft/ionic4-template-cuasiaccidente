@@ -1,0 +1,165 @@
+:host {
+    ion-content {
+        --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+    }
+
+    ion-list {
+        &.list-md {
+            padding: 0;
+        }
+    } 
+}
+
+ion-content {
+  padding-bottom: 120px;
+}
+
+agm-map {
+  height: 180px;
+  .gmnoprint {
+    display: none !important;
+  }
+}
+
+ion-card.hotelsCard {
+  position: relative;
+  ion-img {
+    margin-bottom: -3px;
+  }
+  ion-card-subtitle {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 2;
+  }
+  ion-card-title {
+    font-size: 18px;
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    z-index: 2;
+    text-shadow: 1px 1px 4px rgba(0,0,0,.4);
+  }
+  ion-card-content {
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+  }
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    box-shadow: inset 0 0 15rem rgba(var(--ion-color-dark-rgb), .95)
+  }
+  .price {
+    right: 2%;
+    bottom: 20%;
+    position: absolute;
+  }
+  .rooms {
+    left: 0;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.booking-card {
+  margin: -20px -20px 40px;
+  padding: 20px;
+  height: 60px;
+  ion-card {
+      width: 100%;
+      background-color: #fff;
+      margin: 0 0 20px;
+      // &:last-of-type {
+      //   margin-bottom: 86px;
+      // }
+      &.searchcard {
+        ion-item {
+          &::shadow {
+            --inner-border-width: 0;
+          }
+        }
+      }
+  }
+
+  ion-searchbar {
+    border-bottom: 1px solid rgba(79,36,172, .1);
+  }
+  .br {
+    border-right: 1px solid rgba(79,36,172, .1);
+  }
+  .bb {
+    border-bottom: 1px solid rgba(79,36,172, .1);
+  }
+  .adjust-qts {
+    margin: 0 -20px 0;
+  }
+  .datetime-btn {
+    background-color: rgba(79,36,172, .06);
+    ion-icon {
+      color: var(--ion-color-primary);
+    }
+  }
+  .searchbar {
+    z-index: 1000;
+  }
+  .searchbar-results {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    right: 12px;
+    z-index: 999;
+    padding-top: 12px;
+    border-radius: 12px;
+    box-shadow: 0 0 1px rgba(79,36,172, .06), 0 2px 4px rgba(79,36,172, .1), 0 0 100rem rgba(79,36,172,.85);
+    .item {
+      color: rgba(79,36,172, .85);
+    }
+  }
+}
+
+.br {
+    border-right: 1px solid rgba(79,36,172, .1);
+}
+.bb {
+    border-bottom: 1px solid rgba(79,36,172, .1);
+}
+
+.bt {
+  border-top: 1px solid rgba(79,36,172, .1);
+}
+
+.bl {
+  border-left: 1px solid rgba(79,36,172, .1);
+}
+
+.datetime-btn {
+  padding-bottom: 12px;
+    background-color: rgba(79,36,172, .06);
+    ion-icon {
+    color: var(--ion-color-primary);
+    }
+}
+
+ion-select {
+  // width: 18px;
+  font-weight: 500;
+  .select-icon {
+      position: relative;
+      width: 14px;
+      height: 18px;
+  }
+}
+
+ion-scroll {
+  padding-bottom: 96px;
+}
+
+ion-slide {
+  padding-bottom: 20px;
+}

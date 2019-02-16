@@ -1,0 +1,8 @@
+{
+  "name": "ionBooking2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "774ecd64"
+}

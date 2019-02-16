@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.favorites.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" margin-bottom>
+        <ion-card *ngIf="!favorites.length" class="bg-white" margin-top>
+          <ion-card-content>
+            <p text-center>
+              <ion-text color="primary">{{ 'app.pages.favorites.title.nores' | translate }}</ion-text>
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-list>
+          <ion-item-sliding *ngFor="let favorite of favorites">
+            <ion-item tappable routerLink="/hotel-detail/{{favorite.hotel.id}}">
+              <ion-thumbnail slot="start">
+                <img [src]="favorite.hotel.thumb">
+              </ion-thumbnail>
+              <ion-label>
+                <h2>
+                  <ion-text color="primary">{{favorite.hotel.name}}</ion-text>
+                </h2>
+                <p>{{favorite.hotel.address}} ∙ {{favorite.hotel.price | currency }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="deleteItem(favorite)">{{ 'app.label.remove' | translate }}</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

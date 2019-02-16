@@ -1,0 +1,218 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{hotel.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+  <ion-slides pager="true" margin-bottom>
+    <ion-slide *ngFor="let image of hotel.images" (click)="presentImage(image)">
+      <img [src]="image">
+      <div class="shadow"></div>
+    </ion-slide>
+  </ion-slides>
+
+  <div padding-horizontal>
+
+    <ion-segment [(ngModel)]="hotelSegment" color="primary">
+      <ion-segment-button value="details">
+        <ion-label>{{ 'app.label.details' | translate }}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="rooms">
+        <ion-label>{{ 'app.label.rooms' | translate }}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="rating">
+        <ion-label>{{ 'app.label.rating' | translate }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    
+    <div [ngSwitch]="hotelSegment">
+      <div *ngSwitchCase="'details'">
+
+        <ion-card no-margin margin-top margin-bottom class="animated fadeIn">
+          <ion-card-content no-padding>
+            <agm-map [latitude]="hotel.location.lat" [longitude]="hotel.location.lon" [zoom]="14" [zoomControl]="false" [styles]="agmStyles"
+              [streetViewControl]="false">
+              <agm-marker [latitude]="hotel.location.lat" [longitude]="hotel.location.lon"></agm-marker>
+            </agm-map>
+          </ion-card-content>
+          <ion-card-content class="bg-white">
+            <h2>
+              <ion-text color="primary">
+                <strong>{{ 'app.label.address' | translate }}</strong>
+              </ion-text>
+            </h2>
+            <p>{{hotel.address}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card no-margin margin-bottom class="bg-white animated fadeIn">
+          <ion-card-content>
+            <ion-card-title>
+              <ion-text color="primary">{{ 'app.label.about' | translate }}</ion-text>
+            </ion-card-title>
+          
+            <ion-text color="dark" margin-bottom>
+              <p>{{hotel.description}}</p>
+            </ion-text>
+            <ion-text color="dark" margin-bottom>
+              <p>{{hotel.location_text}}</p>
+            </ion-text>
+            
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card no-margin margin-bottom class="bg-white animated fadeIn">
+          <ion-card-content>
+            <ion-card-title margin-bottom>
+              <ion-text color="primary">{{ 'app.label.amenities' | translate }}</ion-text>
+            </ion-card-title>
+
+            <ion-chip margin-left color="primary" *ngFor="let services of hotel.services">
+              <ion-icon [name]="services.icon"></ion-icon>
+              <ion-label>{{services.name}}</ion-label>
+            </ion-chip>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card no-margin margin-bottom class="bg-white animated fadeIn">
+          <ion-card-content>
+            <ion-card-title margin-bottom>
+              <ion-text color="primary">{{ 'app.label.features' | translate }}</ion-text>
+            </ion-card-title>
+        
+            <ion-text color="dark">
+              <p>{{hotel.features}}</p>
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+
+      </div>
+
+      <div *ngSwitchCase="'rooms'" [@staggerIn]='hotel.rooms.length'>
+        <ion-card no-margin margin-vertical class="bg-profile animated fadeIn">
+          <ion-card-content>
+            <ion-text color="light">
+              <p>{{hotel.room_amenities}}</p>
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card no-margin margin-vertical class="bg-white" *ngFor="let room of hotel.rooms">
+          <ion-img [src]="room.thumb"></ion-img>
+
+          <ion-card-content>
+            
+            <ion-card-subtitle>
+              <ion-text color="secondary">{{room.beds}}</ion-text>
+            </ion-card-subtitle>
+
+            <ion-card-title>
+              <ion-text color="primary">{{room.name}}</ion-text>
+            </ion-card-title>
+
+            <ion-badge slot="start" color="primary" margin-bottom>{{ room.numb_available_rooms }} {{ 'app.label.availrooms' | translate }}</ion-badge>
+            <p><ion-text color="primary">{{room.room_info}}</ion-text></p>
+            
+            <ion-button size="large" shape="round" expand="full" color="success" (click)="checkout(hotel.id, room.id)">
+              <ion-icon slot="start" name="book"></ion-icon>
+              {{ 'app.label.book' | translate }} ({{ room.price | currency:'$':'code' }})
+            </ion-button>
+          </ion-card-content>
+
+        </ion-card>
+      </div>
+
+      <div *ngSwitchCase="'rating'">
+        
+       <ion-grid no-padding margin-top margin-bottom>
+         <ion-row>
+           <ion-col size="4" no-padding>
+              <ion-card no-margin class="bg-white animated fadeIn">
+                <ion-card-content text-center>
+                  <h3>
+                    <ion-text color="primary">{{ 'app.label.average' | translate }}</ion-text>
+                  </h3>
+                  <h1 no-margin>
+                    <ion-text color="primary">
+                      <strong>{{ avgRating() }}</strong>
+                    </ion-text>
+                  </h1>
+                </ion-card-content>
+              </ion-card>
+           </ion-col>
+           <ion-col size="8" no-padding>
+              <ion-card no-margin class="bg-profile animated fadeIn">
+                  <ion-card-content>
+                    <h1>
+                      <ion-text color="light">{{ avgRating() }} / <strong>5</strong></ion-text>
+                    </h1>
+                    <h3>
+                      <ion-text color="light">
+                        totally {{hotel.reviews.length}} people reviewed
+                      </ion-text>
+                    </h3>
+                  </ion-card-content>
+                </ion-card>
+            </ion-col>  
+         </ion-row>
+       </ion-grid>
+
+        <ion-card *ngFor="let review of hotel.reviews" class="bg-white" no-margin margin-bottom>
+          <ion-card-content>
+            <h2>
+              <ion-text color="primary">
+                <strong>{{ review.title }}</strong>
+              </ion-text>
+            </h2>
+            <div class="text-08">
+              <ion-icon color="warning" size="small" name="star" *ngFor="let start of range(review.rating)"></ion-icon>
+            </div>
+            <p margin-bottom>
+              <ion-text color="primary">
+                {{ review.content }}
+              </ion-text>
+            </p>
+            <cite class="text-08">
+              <ion-text color="secondary">{{ review.username }} from {{ review.from }}</ion-text>
+            </cite>
+            <!-- <h3>{{}}</h3> -->
+          </ion-card-content>
+        </ion-card>
+
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer class="animated fadeIn">
+    <ion-toolbar color="primary">
+      <ion-grid no-padding>
+          <ion-row>
+            <ion-col size="4" no-padding>
+              <ion-button size="small" shape="round" expand="full" fill="clear" color="tertiary" (click)="favorite(hotel)">
+                <ion-icon slot="start" name="heart"></ion-icon>
+                {{ 'app.button.fav' | translate }}
+              </ion-button>
+            </ion-col>
+            <ion-col size="4" no-padding>
+              <ion-button size="small" shape="round" expand="full" fill="clear" color="tertiary" href="tel:+13174562564">
+                <ion-icon slot="start" name="call"></ion-icon>
+                {{ 'app.button.callus' | translate }}
+              </ion-button>
+            </ion-col>
+            <ion-col size="4" no-padding>
+              <ion-button size="small" shape="round" expand="full" fill="clear" color="light" (click)="share()">
+                <ion-icon slot="start" name="share"></ion-icon>
+                {{ 'app.button.share' | translate }}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-footer>

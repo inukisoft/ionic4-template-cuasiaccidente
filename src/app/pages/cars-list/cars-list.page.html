@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.carlist.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="dark">
+    <ion-title>
+      <h6 no-margin>({{ shops.length }}) {{ 'app.label.resultsf' | translate }}</h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn">
+  <div [@staggerIn]='shops.length'>
+    <!-- # -->
+    <ion-item color="primary" tappable routerLink="/car-detail/{{shop.id}}" margin-bottom *ngFor="let shop of shops">
+      <ion-thumbnail slot="start">
+        <img [src]="shop.thumb">
+      </ion-thumbnail>
+      <ion-label>
+        <h2><strong>{{ shop.name }}</strong></h2>
+        <h3>
+          <ion-badge slot="start" color="secondary" class="rooms">
+            <ion-icon name="book" color="tertiary"></ion-icon>
+            {{ 'app.label.daily' | translate }} {{ shop.price | currency }}
+          </ion-badge>
+        </h3>
+        <p>
+          <ion-icon name="person" color="tertiary"></ion-icon> {{ shop.passengers_from }}-{{ shop.passengers_to }} | <ion-icon name="briefcase" color="tertiary"></ion-icon> {{ shop.luggage }}
+        </p>
+        <ion-badge color="success">
+          {{ 'app.label.total' | translate }} <strong>{{ shop.price * numDays | currency }}</strong>
+        </ion-badge>
+      </ion-label>
+    </ion-item>
+    <!-- # -->
+  </div>
+</ion-content>

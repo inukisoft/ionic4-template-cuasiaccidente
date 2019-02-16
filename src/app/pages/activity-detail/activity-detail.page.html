@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.activitydetail.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-tertiary animated fadeIn">
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let image of trip.images">
+      <img [src]="image">
+      <div class="shadow"></div>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card no-margin class="animated fadeIn">
+    <ion-card-content class="bg-white">
+      <h1>
+        <ion-text color="primary">
+          <strong>{{trip.name}}</strong>
+        </ion-text>
+      </h1>
+      <h3>
+        <ion-text color="primary">{{ trip.sub_name }}</ion-text>
+      </h3>
+      <hr>
+      <ion-badge slot="end" color="tertiary" margin-right>
+        <ion-icon name="clock"></ion-icon>
+        {{ trip.time }}
+      </ion-badge>
+      <ion-badge slot="end" color="tertiary" *ngIf="trip.free_cancellation === 1">
+        <ion-icon name="checkbox-outline"></ion-icon>
+        {{ 'app.label.freecancel' | translate }}
+      </ion-badge>
+      <ion-badge slot="end" color="tertiary" *ngIf="trip.electric_voucher === 1">
+        <ion-icon name="list-box"></ion-icon>
+        {{ 'app.label.voucher' | translate }}
+      </ion-badge>
+    </ion-card-content>
+    <ion-list>
+      <ion-item color="primary" *ngFor="let high of trip.highlights">
+        <ion-icon slot="start" name="checkmark" color="success"></ion-icon>
+        {{ high }}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card class="bg-white">
+    <ion-card-content>
+      <ion-card-title>
+        <ion-text color="primary"><strong>{{ 'app.label.description' | translate }}</strong></ion-text>
+      </ion-card-title>
+  
+      <p>
+        <ion-text color="primary">
+          {{ trip.description }}
+        </ion-text>
+      </p>
+    </ion-card-content>
+    <ion-card-content>
+        <ion-card-title>
+          <ion-text color="primary"><strong>{{ 'app.label.location' | translate }}</strong></ion-text>
+        </ion-card-title>
+    
+        <p>
+          <ion-text color="primary">
+            {{ trip.location }}
+          </ion-text>
+        </p>
+      </ion-card-content>  
+  </ion-card>
+
+  <ion-card class="bg-white">
+    <ion-card-content>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col class="adult" size="6">
+            <h2>
+              <ion-text color="primary"><strong>{{ trip.price_adult | currency }}</strong> p/ Adult</ion-text>
+            </h2>
+          </ion-col>
+          <ion-col size="2" text-center>
+            <ion-icon name="remove-circle" class="text20" tappable (click)="minusAdult()" [hidden]="adults < 2"
+                      color="secondary"></ion-icon>
+          </ion-col>
+          <ion-col size="2" text-center>
+            <h2><ion-text color="primary"><strong>{{ adults }}</strong></ion-text></h2>
+          </ion-col>
+          <ion-col size="2" text-center>
+            <ion-icon name="add-circle" class="text20" tappable (click)="plusAdult()" color="secondary"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <h2>
+              <ion-text color="primary"><strong>{{ trip.price_child | currency }}</strong> p/ Child (0-12 years)</ion-text>
+            </h2>
+          </ion-col>
+          <ion-col size="2" text-center>
+            <ion-icon name="remove-circle" class="text20" tappable (click)="minusChildren()" [hidden]="children < 1"
+                      color="secondary"></ion-icon>
+          </ion-col>
+          <ion-col size="2" text-center>
+            <h2><ion-text color="primary"><strong>{{ children }}</strong></ion-text></h2>
+          </ion-col>
+          <ion-col size="2" text-center>
+            <ion-icon name="add-circle" class="text20" tappable (click)="plusChildren()" color="secondary"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button shape="round" size="full" color="success" tappable (click)="checkout(trip.id)">{{'app.button.booknow' | translate }} {{ adults * trip.price_adult +
+        children * trip.price_child | currency }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,156 @@
+{
+    
+    "app.name": "CuasiAccidente",
+    "app.version": "1.0.0",
+    "app.description": "Reporte de Cuasiaccidentes en la planta",
+
+
+    "app.button.search": "Search",
+    "app.button.checkout": "Checkout",
+    "app.button.booknow": "Book Now",
+    "app.button.callus": "Call us",
+    "app.button.fav": "Favorite",
+    "app.button.share": "Share",
+    "app.button.signin": "Sign in",
+    "app.button.signup": "Sign up",
+
+    "app.label.booked": "Booked",
+    "app.label.book": "Book",
+    "app.label.resultsf": "Results Found!",
+    "app.label.cc": "Credit Card",
+    "app.label.ch": "Card Holder",
+    "app.label.cn": "Card Number",
+    "app.label.pp": "Paypal",
+    "app.label.freecancel": "free cancellation",
+    "app.label.average": "Average",
+    "app.label.averageprice": "average price",
+    "app.label.totalvat": "Total + VAT",
+    "app.label.total": "Total",
+    "app.label.voucher": "Voucher",
+    "app.label.description": "Description",
+    "app.label.location": "Location",
+    "app.label.reserve": "Reserve",
+    "app.label.passengers": "Passengers",
+    "app.label.doors": "Doors",
+    "app.label.remove": "Remove",
+    "app.label.adult": "Adult",
+    "app.label.child": "Child",
+    "app.label.guests": "Guests",
+    "app.label.otherguests": "Other Guests",
+    "app.label.nights": "Nights",
+    "app.label.days": "Days",
+    "app.label.daily": "Daily",
+    "app.label.userdata": "User Data",
+    "app.label.usertype": "User Type",
+    "app.label.edit": "Edit",
+    "app.label.insertavatar": "Insert Avatar",
+    "app.label.name": "Name",
+    "app.label.fullname": "Full Name",
+    "app.label.address": "Address",
+    "app.label.city": "City",
+    "app.label.state": "State",
+    "app.label.email": "Email",
+    "app.label.password": "Password",
+    "app.label.details": "Details",
+    "app.label.rooms": "Rooms",
+    "app.label.rating": "Rating",
+    "app.label.about": "About",
+    "app.label.amenities": "Amenities",
+    "app.label.features": "Features",
+    "app.label.availrooms": "Available rooms",
+    "app.label.selectlocal": "Select Local",
+
+    "app.label.errors.field": "This field is required",
+
+    "app.pages.extras.title.header": "Extras pages",
+    "app.pages.extras.profileone.title.header": "Profile One",
+    "app.pages.extras.profiletwo.title.header": "Profile Two",
+    "app.pages.extras.timeline.title.header": "Timeline",
+    "app.pages.extras.auth.title.header": "Authentication",
+    "app.pages.extras.popupmenu.title.header": "Popup menu",
+    "app.pages.extras.charts.title.header": "Charts",
+    "app.pages.extras.post.title.header": "Blog Post",
+
+    "app.pages.menu.home": "Home",
+    "app.pages.menu.booking": "Booking List",
+    "app.pages.menu.favorites": "Favorites",
+    "app.pages.menu.rentacar": "Rent a Car",
+    "app.pages.menu.activities": "Trip Activities",
+    "app.pages.menu.activitiestab": "Activities",
+    "app.pages.menu.logout": "Logout",
+    "app.pages.menu.editprofile": "Edit Profile",
+    "app.pages.menu.weather": "Local Weather",
+    "app.pages.menu.about": "About App",
+    "app.pages.menu.settings": "Settings",
+    "app.pages.menu.support": "Support",
+
+    "app.pages.home.label.fechacuasi": "Fecha Cuasi",
+    "app.pages.home.label.unidad": "Unidad",
+    "app.pages.home.label.area": "Área",
+    "app.pages.home.label.accioninmediata": "¿Acción inmediata?",
+    "app.pages.home.label.notificoinmediato": "¿Notificó el cuasi?",
+    "app.pages.home.label.tipotrabajador" : "Tipo Trabajador",
+    "app.pages.home.title.area" : "¿Dónde Fue?",
+    "app.pages.home.label.queocurrio" : "¿Qué Ocurrió?",
+
+
+    "app.pages.home.label.checkin": "Check-in",
+    "app.pages.home.label.checkout": "Check-out",
+    "app.pages.home.label.rooms": "Rooms",
+    "app.pages.home.label.adults": "Adults",
+    "app.pages.home.label.children": "Children",
+    "app.pages.home.label.child": "Child",
+    "app.pages.home.label.childage": "Child's age",
+    "app.pages.home.label.childrenages": "Children's ages",
+    "app.pages.home.label.pamenities": "Preferred Amenities",
+    "app.pages.home.label.availrooms": "Available rooms",
+
+
+
+    "app.pages.home.title.recommended": "Recommended Hotels",
+    "app.pages.home.title.latestbookings": "Latest Bookings",
+    "app.pages.home.title.nearyou": "Hotels Near you",
+
+
+    "app.pages.about.title.header": "About",
+
+    "app.pages.activities.title.header": "Trip Activities",
+
+    "app.pages.activitycheck.title.header": "Activity Checkout",
+
+    "app.pages.activitydetail.title.header": "Activity Detail",
+
+    "app.pages.activitylist.title.header": "Activity List",
+
+    "app.pages.bookinglist.title.header": "Booking List",
+    "app.pages.bookinglist.title.nores": "You have no bookings yet.",
+
+    "app.pages.carcheckout.title.header": "Car Checkout",
+
+    "app.pages.cardetail.title.header": "Car Shop Detail",
+    "app.pages.cardetail.label.autotransmission": "Automatic transmission",
+    "app.pages.cardetail.label.manualtransmission": "Manual transmission",
+
+    "app.pages.carlist.title.header": "Car List",
+
+    "app.pages.editprofile.title.header": "Edit Profile",
+    "app.pages.editprofile.avail.text": "Available to chat w/ Travel Agents?",
+
+    "app.pages.favorites.title.header": "Favorites",
+    "app.pages.favorites.title.nores": "You have no favorite hotels.",
+
+    "app.pages.hotelcheckout.title.header": "Hotel Checkout",
+
+    "app.pages.hotellist.title.header": "Hotel List",
+
+    "app.pages.localweather.title.header": "Local Weather",
+    "app.pages.localweather.label.temp": "Temperature",
+    "app.pages.localweather.label.humidity": "Humidity",
+    "app.pages.localweather.label.dewpoint": "Dewpoint",
+    "app.pages.localweather.label.visibility": "Visibility",
+    "app.pages.localweather.label.heatindex": "Heat Index",
+
+    "app.pages.login.label.forgot": "Forgot Password?",
+    "app.pages.login.text.forgot": "Enter you email address to send a reset link password.",
+    "app.pages.login.text.sended": "Email was sended successfully."
+}

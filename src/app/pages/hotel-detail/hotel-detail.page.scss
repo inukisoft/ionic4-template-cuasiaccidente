@@ -1,0 +1,27 @@
+:host {
+  ion-content {
+    --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+  }
+}
+
+agm-map {
+  height: 180px;
+  .gmnoprint {
+    display: none !important;
+  }
+}
+
+ion-slides {
+  box-shadow: 0 4px 16px rgba(var(--ion-color-dark-rgb),.4);
+  ion-slide {
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      box-shadow: inset 0 0 15rem rgba(var(--ion-color-dark-rgb), .95)
+    }
+  }
+}

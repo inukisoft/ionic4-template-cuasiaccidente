@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" margin-bottom>
+        <ion-card *ngIf="!messages.length" class="bg-white" margin-top>
+          <ion-card-content>
+            <p text-center>
+              <ion-text color="primary">You have no messages.</ion-text>
+            </p>
+          </ion-card-content>
+        </ion-card>
+  
+        <ion-list>
+          <ion-item-sliding *ngFor="let message of messages">
+            <ion-item tappable routerLink="/message/{{message.id}}">
+              <ion-label>
+                <h2 [ngClass]="{'fw700 text-white': !message.read}">
+                  <ion-icon name="mail" slot="start" color="dark" *ngIf="!message.read"></ion-icon>
+                  <ion-icon name="mail-open" slot="start" color="primary" *ngIf="message.read"></ion-icon>
+                  <ion-text color="primary">{{message.title}}</ion-text>
+                </h2>
+                <p [ngClass]="{'text-light': !message.read}">
+                  <ion-text color="dark">{{message.senderName}} ∙ {{message.date | date: 'MM/dd/yyyy'}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="deleteItem(message)">Remove</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

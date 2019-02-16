@@ -1,0 +1,42 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "ionBooking2",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/robots.txt",
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "ionictheme.com",
+      "urls": [
+        "https://ionbooking2.ionictheme.com/**",
+        "https://ionbooking2.firebaseapp.com/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "7d",
+        "timeout": "1m",
+        "strategy": "performance"
+      }
+    }
+  ]
+}

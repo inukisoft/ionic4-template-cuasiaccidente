@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Rent a Car</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="animated fadeIn">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <!-- choose pickup and drop-off-->
+        <h6 no-margin margin-bottom>
+          <ion-text color="primary">Pick-up / Drop-off</ion-text>
+        </h6>
+        <ion-card no-margin margin-bottom class="bg-white">
+          <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
+            <ion-icon name="pin" color="primary" slot="start"></ion-icon>
+            <ion-text color="primary">{{ search.pickup }}</ion-text>
+          </ion-item>
+          <ion-item tappable (click)="choosePlace('to')">
+            <ion-icon name="pin" color="primary" slot="start"></ion-icon>
+            <ion-text color="primary">{{ search.dropOff }}</ion-text>
+          </ion-item>
+        </ion-card>
+  
+        <!--choose time-->
+        <ion-card no-margin margin-bottom class="bg-white">
+          <ion-item>
+            <ion-icon name="md-calendar" color="primary" slot="start"></ion-icon>
+            <ion-datetime class="no-pl" color="primary" displayFormat="DD/MM/YYYY h:mm A" pickerFormat="DD/MM/YYYY h:mm A"
+              [(ngModel)]="search.from"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="md-calendar" color="primary" slot="start"></ion-icon>
+            <ion-datetime class="no-pl" color="primary" displayFormat="DD/MM/YYYY h:mm A" pickerFormat="DD/MM/YYYY h:mm A"
+              [(ngModel)]="search.to"></ion-datetime>
+          </ion-item>
+        </ion-card>
+  
+        <hr>
+  
+        <h6 no-margin margin-bottom>
+          <ion-text color="primary">Make:</ion-text>
+        </h6>
+        <ion-card no-margin margin-bottom class="bg-white">
+          <ion-item>
+            <ion-label>
+              <ion-text color="primary">One or more:</ion-text>
+            </ion-label>
+            <ion-select [(ngModel)]="toppings" color="primary" multiple="true" cancelText="Cancel" okText="OK">
+              <ion-select-option value="audi" selected="true">Audi</ion-select-option>
+              <ion-select-option value="bmw">BMW</ion-select-option>
+              <ion-select-option value="chevrolet" selected="true">Chevrolet</ion-select-option>
+              <ion-select-option value="dodge">Dodge</ion-select-option>
+              <ion-select-option value="fiat">FIAT</ion-select-option>
+              <ion-select-option value="ford">Ford</ion-select-option>
+              <ion-select-option value="honda">Honda</ion-select-option>
+              <ion-select-option value="toyota">Toyota</ion-select-option>
+              <ion-select-option value="volvo">Volvo</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+  
+        <ion-button shape="round" expand="full" color="dark" (click)="doSearch()">
+          <ion-icon slot="start" name="search"></ion-icon> Search
+        </ion-button>
+  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

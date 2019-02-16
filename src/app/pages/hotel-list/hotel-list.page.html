@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.hotellist.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="dark">
+    <ion-title>
+      <h6 no-margin>({{ hotels?.length || '0' }}) {{ 'app.label.resultsf' | translate }}</h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+
+  <div padding>
+
+    <ion-segment [(ngModel)]="hotelLists" (ionChange)="segmentChanged($event)" color="light" margin-bottom>
+      <ion-segment-button value="cardlist">
+        <ion-icon name="apps" color="tertiary"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="linelist">
+        <ion-icon name="list" color="tertiary"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="maplist">
+        <ion-icon name="map" color="tertiary"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="hotelLists">
+      <div *ngSwitchCase="'cardlist'" [@staggerIn]='hotels?.length'>
+        <!-- # -->
+        <ion-card no-margin margin-bottom class="hotelsCard" tappable routerLink="/hotel-detail/{{hotel.id}}" *ngFor="let hotel of hotels; let i = index">
+          <ion-img [src]="hotel.thumb"></ion-img>
+        
+          <ion-card-subtitle>
+            <ion-badge color="warning">
+              <ion-icon name="star"></ion-icon> {{ hotel.rating }}
+            </ion-badge>
+          </ion-card-subtitle>
+          <ion-card-title color="light">{{ hotel.name }}</ion-card-title>
+          <div class="shadow"></div>
+          <ion-card-content>
+            <ion-badge slot="start" color="dark" class="rooms">
+              <ion-icon name="book" color="secondary"></ion-icon>
+              {{ hotel.numb_available_rooms }} {{ 'app.label.availrooms' | translate }}
+            </ion-badge>
+        
+            <ion-badge slot="end" color="success" class="price">
+              <h3><strong>{{ hotel.price | currency:'$':'code' }}</strong></h3>
+            </ion-badge>
+          </ion-card-content>
+        </ion-card>
+        <!-- # -->
+      </div>
+      <div *ngSwitchCase="'linelist'" [@staggerIn]='hotels.length'>
+        <!-- # -->
+        <ion-item color="primary" tappable routerLink="/hotel-detail/{{hotel.id}}" margin-bottom *ngFor="let hotel of hotels; let i = index">
+          <ion-thumbnail slot="start">
+            <img [src]="hotel.thumb">
+          </ion-thumbnail>
+          <ion-label>
+            <h2><strong>{{ hotel.name }}</strong></h2>
+            <h3>
+              <ion-badge slot="start" color="secondary" class="rooms">
+                <ion-icon name="book" color="tertiary"></ion-icon>
+                {{ hotel.numb_available_rooms }} {{ 'app.label.availrooms' | translate }}
+              </ion-badge>
+            </h3>
+            <ion-badge color="warning">
+              <ion-icon name="star"></ion-icon> {{ hotel.rating }}
+            </ion-badge>
+          </ion-label>
+        </ion-item>
+        <!-- # -->
+      </div>
+      <div *ngSwitchCase="'maplist'">
+        <!-- # -->
+        <agm-map [latitude]="hotels[0].location.lat" [longitude]="hotels[0].location.lon" [zoom]="10" [zoomControl]="false" [styles]="agmStyles"
+          [streetViewControl]="false">
+          <agm-marker *ngFor="let hotel of hotels" [latitude]="hotel.location.lat" [longitude]="hotel.location.lon">
+            <agm-info-window>
+              <ion-item tappable routerLink="/hotel-detail/{{hotel.id}}">
+                <ion-thumbnail slot="start">
+                  <img [src]="hotel.thumb">
+                </ion-thumbnail>
+                <ion-label>
+                  <ion-text color="primary">
+                    <h2><strong>{{ hotel.name }}</strong></h2>
+                  </ion-text>
+                  
+                  <h3>
+                    <ion-badge slot="start" color="secondary" class="rooms">
+                      <ion-icon name="book" color="tertiary"></ion-icon>
+                      {{ hotel.numb_available_rooms }} {{ 'app.label.availrooms' | translate }}
+                    </ion-badge>
+                  </h3>
+                  <ion-badge color="warning">
+                    <ion-icon name="star"></ion-icon> {{ hotel.rating }}
+                  </ion-badge>
+                </ion-label>
+              </ion-item>
+            </agm-info-window>
+          </agm-marker>
+        </agm-map>
+        <!-- # -->
+      </div>
+    </div>
+    <!-- # -->
+  </div>
+
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.bookinglist.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" margin-bottom>
+        <ion-card *ngIf="!bookings.length" class="bg-white" margin-top>
+          <ion-card-content>
+            <p text-center>
+              <ion-text color="primary">{{ 'app.pages.bookinglist.title.nores' | translate }}</ion-text>
+            </p>
+          </ion-card-content>
+        </ion-card>
+  
+        <ion-list>
+
+          <ion-item tappable routerLink="/hotel-detail/{{booking.hotel.id}}" *ngFor="let booking of bookings">
+            <ion-thumbnail slot="start">
+              <img [src]="booking.hotel.thumb">
+            </ion-thumbnail>
+            <ion-label>
+              <h2>
+                <ion-text color="primary">{{booking.hotel.name}}</ion-text>
+              </h2>
+              <p>{{booking.hotel.address}} ∙ {{booking.hotel.price | currency }}</p>
+              <ion-badge color="success">{{ 'app.label.booked' | translate }}</ion-badge>
+            </ion-label>
+          </ion-item>
+
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

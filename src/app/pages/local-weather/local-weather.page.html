@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.localweather.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn">
+
+  <ion-card class="bg-primary" no-margin margin-bottom>
+    <ion-card-content no-padding>
+  
+      <ion-item>
+        <ion-label class="text-1x fw700">
+          <ion-text color="light">{{ 'app.label.selectlocal' | translate }}</ion-text>
+        </ion-label>
+        <ion-select [(ngModel)]="location" (ionChange)="getWeather(location)">
+          <ion-select-option *ngFor="let location of locationList" [value]="location">
+            <ion-text color="light">{{ location.city }}</ion-text>
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card no-margin class="bg-white">
+    <ion-card-content no-padding>
+    <ion-grid padding *ngIf="weather">
+      <ion-row>
+        <ion-col size="6">
+          <h2 class="location text-dark">{{weather.display_location.full}}</h2>
+          <div class="icon"><img src="{{weather.icon_url}}" alt="weather"></div>
+          <h3 class="desc">{{weather.weather}}</h3>
+          <h1 class="temp">{{weather.temp_c}}&deg;</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-list>
+    
+            <ion-item>
+              <strong>{{ 'app.pages.localweather.label.temp' | translate }}:</strong> {{weather.temperature_string}}
+            </ion-item>
+            <ion-item>
+              <strong>{{ 'app.pages.localweather.label.humidity' | translate }}:</strong> {{weather.relative_humidity}}
+            </ion-item>
+            <ion-item>
+              <strong>{{ 'app.pages.localweather.label.dewpoint' | translate }}:</strong> {{weather.dewpoint_string}}
+            </ion-item>
+            <ion-item>
+              <strong>{{ 'app.pages.localweather.label.visibility' | translate }}:</strong> {{weather.visibility_km}}
+            </ion-item>
+            <ion-item>
+              <strong>{{ 'app.pages.localweather.label.heatindex' | translate }}:</strong> {{weather.heat_index_string}}
+            </ion-item>
+    
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

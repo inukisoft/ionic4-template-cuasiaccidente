@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.cardetail.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="animated fadeIn">
+  <div class="bg-profile" text-center>
+    <img [src]="carshop.thumb">
+  </div>
+
+  <ion-card no-margin class="animated fadeIn">
+    <ion-card-content class="bg-white">
+      <h1>
+        <ion-text color="primary">
+          <strong>{{carshop.name}}</strong>
+        </ion-text>
+      </h1>
+      <h3>
+        <ion-text color="primary">{{ carshop.slogan }}</ion-text>
+      </h3>
+      <hr>
+      <p>{{carshop.address}}</p>
+    </ion-card-content>
+    <ion-item color="primary">
+      <ion-label>
+        {{ 'app.label.averageprice' | translate }}:
+      </ion-label>
+      <ion-badge slot="end" color="success">
+        {{ carshop.price | currency }}
+      </ion-badge>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="bg-white" *ngFor="let car of carshop.cars">
+    <ion-img [src]="car.thumb"></ion-img>
+  
+    <ion-card-content>
+  
+      <ion-card-subtitle>
+        <ion-text color="secondary">{{ 'app.label.daily' | translate }} {{ car.price | currency }}</ion-text>
+      </ion-card-subtitle>
+  
+      <ion-card-title>
+        <ion-text color="primary">{{car.name}}</ion-text>
+      </ion-card-title>
+  
+      <p>
+        <ion-text color="primary">
+          <ion-icon name="person" color="dark"></ion-icon>
+          <span margin-right>{{ car.passengers }} {{ 'app.label.passengers' | translate }}</span>
+        </ion-text>
+      </p>
+      <p>
+        <ion-text color="primary">
+          <ion-icon name="car" color="dark"></ion-icon>
+          {{ car.doors }} {{ 'app.label.doors' | translate }}
+        </ion-text>
+      </p>
+      <p>
+        <ion-text color="primary">
+          <ion-icon name="checkmark" color="success"></ion-icon>
+          <span ion-text color="dark" *ngIf="car.automatic_transmission">{{ 'app.pages.cardetail.label.autotransmission' | translate }}</span>
+          <span ion-text color="dark" *ngIf="!car.automatic_transmission">{{ 'app.pages.cardetail.label.manualtransmission' | translate }}</span>
+        </ion-text>
+      </p>
+      <ion-button shape="round" expand="full" color="dark" (click)="checkout(carshop.id, car.id)">
+        <ion-icon slot="start" name="car"></ion-icon>
+        {{ 'app.label.reserve' | translate }} ({{ car.price * 3 | currency }})
+      </ion-button>
+    </ion-card-content>
+  
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.activitylist.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="dark">
+    <ion-title>
+      <h6 no-margin>({{ trips.length }}) Results Found!</h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn">
+  <div [@staggerIn]='trips.length'>
+    <ion-card no-margin margin-bottom class="tripsCard" tappable routerLink="/activity-detail/{{trip.id}}" *ngFor="let trip of trips; let i = index">
+      <ion-img [src]="trip.thumb"></ion-img>
+    
+      <ion-card-subtitle>
+        <ion-badge color="warning">
+          <ion-icon name="clock"></ion-icon> {{ trip.time }}
+        </ion-badge>
+      </ion-card-subtitle>
+      <ion-card-title color="light">{{ trip.name }}</ion-card-title>
+      <div class="shadow"></div>
+      <ion-card-content>
+        <ion-badge slot="start" color="dark" class="rooms">
+          <ion-icon name="book" color="secondary"></ion-icon>
+          {{ trip.sub_name }}
+        </ion-badge>
+    
+        <ion-badge slot="end" color="success" class="price">
+          <h3><strong>{{ trip.price_adult | currency:'$':'code' }}</strong></h3>
+        </ion-badge>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

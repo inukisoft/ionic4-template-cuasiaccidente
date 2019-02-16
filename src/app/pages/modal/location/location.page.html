@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Get Location</ion-title>
+      <ion-buttons slot="end">
+        <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+          <ion-icon slot="start" name="close"></ion-icon> Close
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar color="primary">
+      <ion-searchbar type="text" placeholder="Find location" animated="true" (ionInput)="setFilteredItems($event)"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="animated fadeIn">
+  <!--recent places-->
+  <ion-item color="secondary" *ngFor="let item of places.recent" tappable (click)="searchBy(item)">
+    <ion-icon name="time" slot="start" color="primary"></ion-icon>
+    <ion-text color="light"><strong>{{ item.name }}</strong></ion-text>
+  </ion-item>
+  <!--nearby places-->
+  <ion-item *ngFor="let item of results" tappable (click)="searchBy(item)">
+    <ion-icon name="locate" slot="start" color="primary"></ion-icon>
+    <ion-text color="primary">{{ item.name }}</ion-text>
+  </ion-item>
+</ion-content>

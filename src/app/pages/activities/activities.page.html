@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'app.pages.activities.title.header' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+
+        <ion-card no-margin margin-bottom class="bg-white">
+          <ion-item tappable (click)="choosePlace('to')">
+            <ion-icon name="pin" color="primary" slot="start"></ion-icon>
+            <ion-text color="primary">{{ search.dropOff }}</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="md-calendar" color="primary" slot="start"></ion-icon>
+            <ion-datetime class="no-pl" color="primary" displayFormat="DD/MM/YYYY h:mm A" pickerFormat="DD/MM/YYYY h:mm A"
+              [(ngModel)]="search.to"></ion-datetime>
+          </ion-item>
+        </ion-card>
+  
+        <ion-button shape="round" expand="full" color="dark" (click)="doSearch()">
+          <ion-icon slot="start" name="search"></ion-icon> {{ 'app.button.search' | translate }}
+        </ion-button>
+  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,180 @@
+<ion-header>
+  <ion-toolbar color="primary" class="animated fadeIn">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-title>
+      <ion-text color="light">
+<!-- [placeholder]="translate.get('userlist.search')" -->
+<!-- {{ 'app.name' | translate }} -->
+        {{ 'app.name' | translate }} <ion-text color="secondary" class="fw700"> {{ 'app.version' | translate }}</ion-text>
+      </ion-text>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button icon-left size="small" shape="round" color="tertiary" (click)="messages()">
+            <ion-icon name="play"></ion-icon>
+      </ion-button>  
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn fast">
+
+  <div class="booking-card bg-dark">
+    <ion-card class="searchcard animated fadeIn">
+      <ion-card-content no-padding>
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col size="12" class="br bb datetime-btn" text-center>
+              <ion-item no-padding text-center>
+                <ion-label position="stacked" class="fw700 text-primary">
+                  <ion-icon name="calendar" slot="start" class="text-dark"></ion-icon>
+                  <ion-text color="dark">{{ fechacuasi.name }}</ion-text>
+                </ion-label>
+                <ion-datetime no-padding no-margin class="text-primary" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="YYYY-MM-DD HH:mm"  [(ngModel)]="fechacuasi.date"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      <ion-card-content>
+
+        <ion-row class="adjust-qts">
+          <ion-col size="12" class="br bb bl bt" no-padding>
+              <ion-item>
+                <ion-label class="text08" no-padding>
+                    <ion-text color="dark">{{ 'app.pages.home.label.unidad' | translate }}</ion-text>
+                </ion-label>
+                <ion-select [(ngModel)]="unidad" cancelText="Cancel" okText="OK" color="primary" no-padding class="text1 text-dark">
+                  <ion-select-option value="1" selected="true">1</ion-select-option>
+                  <ion-select-option value="2">2</ion-select-option>
+                  <ion-select-option value="3">3</ion-select-option>
+                  <ion-select-option value="4">4</ion-select-option>
+                  <ion-select-option value="5">5</ion-select-option>
+                  <ion-select-option value="6">6</ion-select-option>
+                  <ion-select-option value="7">7</ion-select-option>
+                  <ion-select-option value="8">8</ion-select-option>
+                  <ion-select-option value="9">9</ion-select-option>
+                </ion-select>
+              </ion-item>
+          </ion-col>
+
+          <ion-col size="6" no-padding>
+        
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="adjust-qts">
+          <ion-col size="12" class="br bb bl bt" no-padding>
+              <ion-item>
+                <ion-label class="text08" no-padding>
+                    <ion-text color="dark">{{ 'app.pages.home.label.area' | translate }}</ion-text>
+                </ion-label>
+                <ion-select [(ngModel)]="area" cancelText="Cancel" okText="OK" color="primary" no-padding class="text1 text-dark">
+                  <ion-select-option value="1" selected="true">1</ion-select-option>
+                  <ion-select-option value="2">2</ion-select-option>
+                  <ion-select-option value="3">3</ion-select-option>
+                  <ion-select-option value="4">4</ion-select-option>
+                  <ion-select-option value="5">5</ion-select-option>
+                  <ion-select-option value="6">6</ion-select-option>
+                  <ion-select-option value="7">7</ion-select-option>
+                  <ion-select-option value="8">8</ion-select-option>
+                  <ion-select-option value="9">9</ion-select-option>
+                </ion-select>
+              </ion-item>
+          </ion-col>
+
+          <ion-col size="6" no-padding>
+        
+          </ion-col>
+        </ion-row>
+
+        <ion-row row class="adjust-qts">
+          <ion-card class="animated fadeIn">
+            <ion-card-content no-padding>
+
+              <img src="../../assets/img/image-factory-map.jpg" usemap="#image-map" />
+              <map name="image-map">
+                  <area target="" alt="Area 1" title="area 1" href="" coords="554,752,705,547" shape="rect"/>
+                  <area target="" alt="Area 2" title="area 2" href="" coords="359,564,255,375" shape="rect"/>
+                  <area target="" alt="Area 3" title="area 3" href="" coords="813,288,991,468" shape="rect"/>
+              </map>
+
+            </ion-card-content>
+          </ion-card>          
+        </ion-row>
+
+        <ion-row class="adjust-qts">
+          <ion-col size="12" class="bb bt br bl" no-padding margin-top margin-bottom>
+
+              <ion-item>
+                
+                <ion-textarea placeholder="Describa lo ocurrido máx 144 caracteres" no-padding class="text08 text-dark"></ion-textarea>                                
+
+              </ion-item>
+
+          </ion-col>          
+        </ion-row>
+
+        <ion-row class="adjust-qts">
+
+          <ion-col size="12" class="br bb bl bt" no-padding>
+              <ion-item>
+                <ion-label class="text08" no-padding>
+                    <ion-text color="dark">{{ 'app.pages.home.label.accioninmediata' | translate }}</ion-text>
+                </ion-label>
+                <ion-toggle ng-model="accioninmediata"
+                color="primary"  class="text1 text-dark" ></ion-toggle>
+               
+              </ion-item>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row class="adjust-qts">
+
+
+          <ion-col size="12" class="br bb bl bt" >
+              <ion-item>
+                <ion-label class="text08" no-padding>
+                    <ion-text color="dark">{{ 'app.pages.home.label.notificoinmediato' | translate }}</ion-text>
+                </ion-label>
+                <ion-toggle ng-model="accioninmediata"
+                color="primary" class="text1 text-dark" ></ion-toggle>
+                
+              </ion-item>
+          </ion-col>
+
+        </ion-row>
+
+        
+        <ion-row class="adjust-qts">
+          <ion-col size="12" class="bb bt br bl" >
+
+              <ion-item>
+                <ion-label class="text-primary text08" no-padding no-margin>
+                  <ion-text color="dark">{{ 'app.pages.home.label.tipotrabajador' | translate }}</ion-text>
+                </ion-label>
+                <ion-select multiple="false" cancelText="Cancel" okText="OK" no-padding class="text08 text-dark">
+                  <ion-select-option value="ccu" selected="true">Trabajador CCU</ion-select-option>
+                  <ion-select-option value="contratista">Contratista</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+          </ion-col>          
+        </ion-row>
+
+      </ion-card-content>
+
+    </ion-card>
+
+
+  </div>
+  <!-- ## -->
+  <!-- ## -->
+  <!-- <popmenu></popmenu> -->
+</ion-content>
