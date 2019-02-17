@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../api.service';
+import { LocalsessionService } from '../../localsession.service';
+import { Cuasi } from '../../cuasi';
+
 
 @Component({
   selector: 'app-home',
@@ -31,6 +34,8 @@ export class HomePage {
 
   equipo: any;
   area: any;
+  cuasi: Cuasi =  new Cuasi();  
+  cuasi_response: any;
 
   adults: any;
 
@@ -48,7 +53,8 @@ export class HomePage {
     private translate: TranslateProvider,
     public hotels: HotelProvider,
     public api: ApiService, 
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private localsessionService: LocalsessionService 
   ) {
 
   }
@@ -60,8 +66,9 @@ export class HomePage {
       'equipo': [null, Validators.required],
       'fechacuasi': [new Date().toISOString(), Validators.required],
       'describa': [null, Validators.nullValidator],
-      'accion': [null, Validators.required],
-      'informo': [null, Validators.required],
+      'accion': [null, Validators.nullValidator],
+      'informo': [null, Validators.nullValidator],
+      'tipotrabajador': ['ccu', Validators.nullValidator]
 
     });
     this.getAreas();
@@ -182,10 +189,52 @@ export class HomePage {
       });
   }
 
+  async addCuasi(cuasi:Cuasi) {
+    const loading = await this.loadingCtrl.create({message : 'Loading ...'});
+    await loading.present();
+    await this.api.addCuasi(cuasi)
+      .subscribe(res => {
+        this.cuasi_response = res;
+        console.log("cuasi_response : " + this.cuasi_response);
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+  }
+
+
   async onFormSubmit(form:NgForm) {
 
     //this.navCtrl.navigateRoot('/tabs/seccion3' );
+    this.localsessionService.area = this.productForm.get("area").value;
+    this.localsessionService.equipo = this.productForm.get("equipo").value;
+    this.localsessionService.rut = "13635509-0"
+    this.localsessionService.fechacuasi = this.productForm.get("fechacuasi").value;
+    this.localsessionService.describa = this.productForm.get("describa").value;
+    this.localsessionService.accion = this.productForm.get("accion").value;
 
+    console.log("this.localsessionService.rut :" + this.localsessionService.rut);
+    console.log("this.localsessionService.area :" + this.localsessionService.area);
+    console.log("this.localsessionService.equipo :" + this.localsessionService.equipo);
+    console.log("this.localsessionService.fechacuasi :" + this.localsessionService.fechacuasi);
+    console.log("this.localsessionService.describa :" + this.localsessionService.describa);
+    console.log("this.localsessionService.accion :" + this.localsessionService.accion);
+
+
+    
+    //this.cuasi.rut = this.localsessionService.rut;
+    this.cuasi.rut = "13635509-0";
+    this.cuasi.area = this.localsessionService.area;    
+    this.cuasi.equipo = this.localsessionService.equipo;
+    this.cuasi.fechacuasi = this.localsessionService.fechacuasi;
+    this.cuasi.describa = this.localsessionService.describa;        
+    this.cuasi.accion = this.localsessionService.accion;
+    this.cuasi.tipotrabajador = this.localsessionService.tipotrabajador;
+
+    this.addCuasi(this.cuasi);
+
+    this.navCtrl.navigateRoot('enviado' );
 
   }
  

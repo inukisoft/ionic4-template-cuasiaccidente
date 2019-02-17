@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'activities', loadChildren: './pages/activities/activities.module#ActivitiesPageModule' },
   { path: 'activity-list', loadChildren: './pages/activity-list/activity-list.module#ActivityListPageModule' },
   { path: 'activity-detail/:id', loadChildren: './pages/activity-detail/activity-detail.module#ActivityDetailPageModule' },
-  { path: 'activity-checkout/:tripID', loadChildren: './pages/activity-checkout/activity-checkout.module#ActivityCheckoutPageModule' }
+  { path: 'activity-checkout/:tripID', loadChildren: './pages/activity-checkout/activity-checkout.module#ActivityCheckoutPageModule' },
+  { path: 'enviado', loadChildren: './pages/enviado/enviado.module#EnviadoPageModule' }  
 ];
 
 @NgModule({

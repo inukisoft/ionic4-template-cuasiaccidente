@@ -50,7 +50,7 @@
                 <ion-label class="text08" no-padding>
                     <ion-text color="dark">{{ 'app.pages.home.label.unidad' | translate }}</ion-text>
                 </ion-label>
-                <ion-select cancelText="Cancel" okText="OK" color="primary" no-padding class="text1 text-dark">
+                <ion-select cancelText="Cancel" okText="OK" color="primary" no-padding class="text1 text-dark" formControlName="equipo">
 
                     <ion-select-option *ngFor="let equipo of equipos" [value]="equipo._id" >{{equipo.equipo}}</ion-select-option>
 
@@ -89,7 +89,7 @@
 
               <ion-item>
                 
-                <ion-textarea placeholder="Describa lo ocurrido máx 144 caracteres" no-padding class="text08 text-dark"></ion-textarea>                                
+                <ion-textarea placeholder="Describa lo ocurrido máx 144 caracteres" formControlName="describa" no-padding class="text08 text-dark"></ion-textarea>                                
 
               </ion-item>
 
@@ -103,7 +103,7 @@
                 <ion-label class="text08" no-padding>
                     <ion-text color="dark">{{ 'app.pages.home.label.accioninmediata' | translate }}</ion-text>
                 </ion-label>
-                <ion-toggle ng-model="accioninmediata"
+                <ion-toggle formControlName="accion"
                 color="primary"  class="text1 text-dark" ></ion-toggle>
                
               </ion-item>
@@ -119,7 +119,7 @@
                 <ion-label class="text08" no-padding>
                     <ion-text color="dark">{{ 'app.pages.home.label.notificoinmediato' | translate }}</ion-text>
                 </ion-label>
-                <ion-toggle ng-model="accioninmediata"
+                <ion-toggle formControlName="informo"
                 color="primary" class="text1 text-dark" ></ion-toggle>
                 
               </ion-item>
@@ -135,7 +135,7 @@
                 <ion-label class="text-primary text08" no-padding no-margin>
                   <ion-text color="dark">{{ 'app.pages.home.label.tipotrabajador' | translate }}</ion-text>
                 </ion-label>
-                <ion-select multiple="false" cancelText="Cancel" okText="OK" no-padding class="text08 text-dark">
+                <ion-select multiple="false" cancelText="Cancel" okText="OK" no-padding class="text08 text-dark" formControlName="tipotrabajador">
                   <ion-select-option value="ccu" selected="true">Trabajador CCU</ion-select-option>
                   <ion-select-option value="contratista">Contratista</ion-select-option>
                 </ion-select>
@@ -147,6 +147,11 @@
       </ion-card-content>
 
     </ion-card>
+
+    <ion-button shape="round" expand="full" color="dark" type="submit" [disabled]="!productForm.valid">
+      <ion-icon slot="start" name="warning"></ion-icon> {{ 'app.pages.home.button.submit' | translate }}
+    </ion-button>
+  
 
 
   </div>

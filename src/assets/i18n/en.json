@@ -92,6 +92,7 @@
     "app.pages.home.label.tipotrabajador" : "Tipo Trabajador",
     "app.pages.home.title.area" : "¿Dónde Fue?",
     "app.pages.home.label.queocurrio" : "¿Qué Ocurrió?",
+    "app.pages.home.button.submit" : "Reportar",
 
 
     "app.pages.home.label.checkin": "Check-in",

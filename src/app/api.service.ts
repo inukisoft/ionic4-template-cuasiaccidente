@@ -6,13 +6,17 @@ import { catchError, tap, map } from 'rxjs/operators';
 
 import { Area } from './area';
 import { Equipo } from './equipo';
+import { Cuasi } from './cuasi';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  withCredencial: true
+
 };
 const apiUrl = "http://elorigendelaespecie.com/api/v1/products";
 const apiAreaUrl = "http://elorigendelaespecie.com/api/v1/areas";
 const apiEquipoUrl = "http://elorigendelaespecie.com/api/v1/equipos";
+const apiCuasiUrl = "http://elorigendelaespecie.com/api/v1/cuasis";
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +52,15 @@ export class ApiService {
         catchError(this.handleError('getEquipo', []))
       );
   }  
+
+  addCuasi (cuasi: Cuasi): Observable<Cuasi> {
+    console.log("qué trae el  cuasi?");
+    console.log("accion :" + cuasi.accion);
+    console.log("rut    :" + cuasi.rut);
+    return this.http.post<Cuasi>(apiCuasiUrl, cuasi, httpOptions).pipe(
+      tap((product: Cuasi) => console.log('cuasi agregado')),
+      catchError(this.handleError<Cuasi>('addCuasi'))
+    );
+  }
 
 }
