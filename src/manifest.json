@@ -1,50 +1,50 @@
 {
   "name": "ionBooking2",
   "short_name": "ionBooking2",
-  "theme_color": "#4F24AC",
-  "background_color": "#D6D5EF",
+  "theme_color": "#56963a",
+  "background_color": "#aae092",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
     {
-      "src": "assets/icons/icon-72x72.png",
-      "sizes": "72x72",
+      "src": "assets/icons/icon-194x72.png",
+      "sizes": "194x72",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-96x96.png",
-      "sizes": "96x96",
+      "src": "assets/icons/icon-258x96.png",
+      "sizes": "258x96",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-128x128.png",
-      "sizes": "128x128",
+      "src": "assets/icons/icon-344x128.png",
+      "sizes": "344x128",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-144x144.png",
-      "sizes": "144x144",
+      "src": "assets/icons/icon-387x144.png",
+      "sizes": "387x144",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-152x152.png",
-      "sizes": "152x152",
+      "src": "assets/icons/icon-409x152.png",
+      "sizes": "409x152",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "assets/icons/icon-517x193.png",
+      "sizes": "517x193",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-384x384.png",
-      "sizes": "384x384",
+      "src": "assets/icons/icon-1032x385.png",
+      "sizes": "1032x385",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-512x512.png",
-      "sizes": "512x512",
+      "src": "assets/icons/icon-1376x513.png",
+      "sizes": "1376x513",
       "type": "image/png"
     }
   ]
