@@ -51,6 +51,13 @@
     "app.label.state": "State",
     "app.label.email": "Correo electronico",
     "app.label.password": "RUT-RUN",
+
+    "app.label.rut": "RUT",
+    "app.pages.login.label.paraque" : "Por qué mi rut - email?", 
+    "app.pages.login.label.paraque.dialog.header": "¿Por qué?",
+    "app.pages.login.label.paraque.dialog.text" : "Con su rut y su email podemos comprobar que es un reportador válido (y no tener que recordar contraseñas).",
+
+
     "app.label.details": "Details",
     "app.label.rooms": "Rooms",
     "app.label.rating": "Rating",

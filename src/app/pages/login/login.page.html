@@ -37,7 +37,7 @@
           <ion-icon name="journal" item-start></ion-icon>
           {{ 'app.label.password' | translate }}
         </ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+        <ion-input color="secondary"  formControlName="password"></ion-input>
       </ion-item>
       <p ion-text color="danger" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
         <ion-text color="danger">
@@ -48,7 +48,7 @@
 
     <p text-right tappable (click)="forgotPass()" class="paz">
       <ion-text color="tertiary">
-        <strong>{{ 'app.pages.login.label.forgot' | translate }}</strong>
+        <strong>{{ 'app.pages.login.label.paraque' | translate }}</strong>
       </ion-text>
     </p>
 

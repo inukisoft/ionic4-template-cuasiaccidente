@@ -40,43 +40,19 @@ export class LoginPage implements OnInit {
 
   async forgotPass() {
     const alert = await this.alertCtrl.create({
-      header: this.translate.get('app.pages.login.label.forgot'),
-      message: this.translate.get('app.pages.login.text.forgot'),
-      inputs: [
-        {
-          name: 'email',
-          type: 'email',
-          placeholder: this.translate.get('app.label.email')
-        }
-      ],
+      header: this.translate.get('app.pages.login.label.paraque.dialog.header'),
+      message: this.translate.get('app.pages.login.label.paraque.dialog.text'),
+    
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Ok',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
-        }, {
-          text: 'Confirm',
-          handler: async () => {
-            const loader = await this.loadingCtrl.create({
-              duration: 2000
-            });
-
-            loader.present();
-            loader.onWillDismiss().then(async l => {
-              const toast = await this.toastCtrl.create({
-                showCloseButton: true,
-                message: this.translate.get('app.pages.login.text.sended'),
-                duration: 3000,
-                position: 'bottom'
-              });
-
-              toast.present();
-            });
-          }
         }
+        
       ]
     });
 
