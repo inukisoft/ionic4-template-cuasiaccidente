@@ -9,14 +9,13 @@ import { Equipo } from './equipo';
 import { Cuasi } from './cuasi';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
-  withCredencial: true
-
+  headers: new HttpHeaders({'Content-Type': 'application/json'} ), 
+  withCredentials: false
 };
-const apiUrl = "http://elorigendelaespecie.com/api/v1/products";
-const apiAreaUrl = "http://elorigendelaespecie.com/api/v1/areas";
-const apiEquipoUrl = "http://elorigendelaespecie.com/api/v1/equipos";
-const apiCuasiUrl = "http://elorigendelaespecie.com/api/v1/cuasis";
+const apiUrl = "http://localhost:7775/api/v1/products";
+const apiAreaUrl = "http://localhost:7775/api/v1/areas";
+const apiEquipoUrl = "http://localhost:7775/api/v1/equipos";
+const apiCuasiUrl = "http://localhost:7775/api/v1/cuasis";
 
 @Injectable({
   providedIn: 'root'

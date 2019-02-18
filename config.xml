@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionictheme.ionbooking.v2" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ionBooking2</name>
-    <description>Ionic 4 Hotel Booking Theme</description>
-    <author email="firminoata@gmail.com" href="https://ionictheme.com">Ionic Theme</author>
+<widget id="inuki.ccu.cuasiaccidente.starter" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cuasiaccidentes</name>
+    <description>App en versión prototipo para el registro de CuasiAccidentes</description>
+    <author email="inukisoft@gmail.com">Inukisoft</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

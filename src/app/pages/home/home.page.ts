@@ -220,17 +220,18 @@ export class HomePage {
     console.log("this.localsessionService.fechacuasi :" + this.localsessionService.fechacuasi);
     console.log("this.localsessionService.describa :" + this.localsessionService.describa);
     console.log("this.localsessionService.accion :" + this.localsessionService.accion);
-
+    console.log("this.localsessionService.informo :" + this.localsessionService.informo);
 
     
     //this.cuasi.rut = this.localsessionService.rut;
-    this.cuasi.rut = "13635509-0";
+    this.cuasi.rut = this.localsessionService.rut == null ? "11111111-1" : this.localsessionService.rut ;
     this.cuasi.area = this.localsessionService.area;    
     this.cuasi.equipo = this.localsessionService.equipo;
     this.cuasi.fechacuasi = this.localsessionService.fechacuasi;
     this.cuasi.describa = this.localsessionService.describa;        
-    this.cuasi.accion = this.localsessionService.accion;
+    this.cuasi.accion = this.localsessionService.accion == null ? 0 : this.localsessionService.accion;
     this.cuasi.tipotrabajador = this.localsessionService.tipotrabajador;
+    this.cuasi.informo = this.localsessionService.informo == null ? 0: this.localsessionService.informo;
 
     this.addCuasi(this.cuasi);
 
