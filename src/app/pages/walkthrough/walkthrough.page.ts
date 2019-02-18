@@ -19,9 +19,9 @@ export class WalkthroughPage implements OnInit {
 
   slideList: Array<any> = [
     {
-      title: 'Descripción del aplicativo <strong>Título</strong>?',
-      description: 'Acá va un texto largo, bueno, algo debe ir para completar la presentación del uso de este producto (esto es meramente informativo y de presentación)',
-      image: 'assets/img/hotel-sp01.png',
+      title: '<strong>¡REPORTA LOS CUASI ACCIDENTES!</strong>',
+      description: 'Un Cuasi accidente es un evento no planificado, sin resultados de lesión o daño, sin embargo tiene el potencial de ser un riesgo, ¡ayúdanos a evitarlos!',
+      image: 'assets/img2/logos_01.png',
     }
   ];
 

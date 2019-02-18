@@ -1,9 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary" class="animated fadeIn">
-    <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
-    </ion-buttons>
-    
+
+
     <ion-title>
       <ion-text color="light">
 <!-- [placeholder]="translate.get('userlist.search')" -->
@@ -12,12 +10,7 @@
       </ion-text>
     </ion-title>
 
-    <ion-buttons slot="end">
-      <ion-button icon-left size="small" shape="round" color="tertiary" (click)="messages()">
-            <ion-icon name="play"></ion-icon>
-      </ion-button>  
-    </ion-buttons>
-
+  
   </ion-toolbar>
 </ion-header>
 
@@ -38,7 +31,7 @@
                 <ion-datetime no-padding no-margin class="text-primary" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="YYYY-MM-DD HH:mm"  formControlName="fechacuasi"></ion-datetime>
               </ion-item>
             </ion-col>
-            
+
           </ion-row>
         </ion-grid>
       </ion-card-content>
@@ -59,7 +52,7 @@
           </ion-col>
 
           <ion-col size="6" no-padding>
-        
+
           </ion-col>
         </ion-row>
 
@@ -78,7 +71,7 @@
           </ion-col>
 
           <ion-col size="6" no-padding>
-        
+
           </ion-col>
         </ion-row>
 
@@ -89,11 +82,10 @@
 
               <ion-item>
                 
-                <ion-textarea placeholder="Describa lo ocurrido máx 144 caracteres" formControlName="describa" no-padding class="text08 text-dark"></ion-textarea>                                
-
+                <ion-textarea placeholder="Describa lo ocurrido máx 144 caracteres" formControlName="describa" no-padding class="text08 text-dark"></ion-textarea>                         
               </ion-item>
 
-          </ion-col>          
+          </ion-col>
         </ion-row>
 
         <ion-row class="adjust-qts">
@@ -105,7 +97,7 @@
                 </ion-label>
                 <ion-toggle formControlName="accion"
                 color="primary"  class="text1 text-dark" ></ion-toggle>
-               
+
               </ion-item>
           </ion-col>
 
@@ -121,13 +113,13 @@
                 </ion-label>
                 <ion-toggle formControlName="informo"
                 color="primary" class="text1 text-dark" ></ion-toggle>
-                
+
               </ion-item>
           </ion-col>
 
         </ion-row>
 
-        
+
         <ion-row class="adjust-qts">
           <ion-col size="12" class="bb bt br bl" >
 
@@ -141,7 +133,7 @@
                 </ion-select>
               </ion-item>
 
-          </ion-col>          
+          </ion-col>
         </ion-row>
 
       </ion-card-content>

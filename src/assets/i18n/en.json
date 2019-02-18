@@ -1,8 +1,8 @@
 {
-    
-    "app.name": "CuasiAccidente",
+
+    "app.name": "Cuasi Accidente",
     "app.version": "1.0.0",
-    "app.description": "Reporte de Cuasiaccidentes en la planta",
+    "app.description": "Reporte de Cuasi accidentes en la planta",
 
 
     "app.button.search": "Search",
@@ -11,8 +11,8 @@
     "app.button.callus": "Call us",
     "app.button.fav": "Favorite",
     "app.button.share": "Share",
-    "app.button.signin": "Sign in",
-    "app.button.signup": "Sign up",
+    "app.button.signin": "INGRESAR",
+    "app.button.signup": "INGRESANDO",
 
     "app.label.booked": "Booked",
     "app.label.book": "Book",
@@ -49,8 +49,8 @@
     "app.label.address": "Address",
     "app.label.city": "City",
     "app.label.state": "State",
-    "app.label.email": "Email",
-    "app.label.password": "Password",
+    "app.label.email": "Correo electronico",
+    "app.label.password": "RUT-RUN",
     "app.label.details": "Details",
     "app.label.rooms": "Rooms",
     "app.label.rating": "Rating",
@@ -84,11 +84,11 @@
     "app.pages.menu.settings": "Settings",
     "app.pages.menu.support": "Support",
 
-    "app.pages.home.label.fechacuasi": "Fecha Cuasi",
+    "app.pages.home.label.fechacuasi": "Ingrese día y hora aproximada",
     "app.pages.home.label.unidad": "Unidad",
     "app.pages.home.label.area": "Área",
-    "app.pages.home.label.accioninmediata": "¿Acción inmediata?",
-    "app.pages.home.label.notificoinmediato": "¿Notificó el cuasi?",
+    "app.pages.home.label.accioninmediata": "¿Se tomó acción inmediata?",
+    "app.pages.home.label.notificoinmediato": "¿Fue Notificada?",
     "app.pages.home.label.tipotrabajador" : "Tipo Trabajador",
     "app.pages.home.title.area" : "¿Dónde Fue?",
     "app.pages.home.label.queocurrio" : "¿Qué Ocurrió?",
