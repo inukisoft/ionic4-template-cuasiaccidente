@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-enviado',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnviadoPage implements OnInit {
 
-  constructor() { }
+  maxTime: any=7000;
+  
+  constructor(
+    public navCtrl: NavController,
+
+  	) { }
 
   ngOnInit() {
+    
+    setTimeout(() => {
+        // this.navCtrl.popToRoot();
+        // might try this instead
+        this.navCtrl.navigateRoot('');
+    }, this.maxTime);
+
   }
 
 }

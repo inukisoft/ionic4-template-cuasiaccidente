@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController, LoadingController } from '@ionic/angular';
+import { ModalController, NavController, MenuController, LoadingController } from '@ionic/angular';
 import { TranslateProvider, HotelProvider } from '../../providers';
 import { Area } from '../../area';
 import { Equipo } from '../../equipo';
@@ -11,6 +11,8 @@ import { environment } from '../../../environments/environment';
 import { ApiService } from '../../api.service';
 import { LocalsessionService } from '../../localsession.service';
 import { Cuasi } from '../../cuasi';
+import { LocationPage } from '../modal/location/location.page';
+import { ImagePage } from '../modal/image/image.page';
 
 
 @Component({
@@ -54,7 +56,8 @@ export class HomePage {
     public hotels: HotelProvider,
     public api: ApiService, 
     private formBuilder: FormBuilder,
-    private localsessionService: LocalsessionService 
+    private localsessionService: LocalsessionService,
+    private modalController: ModalController
   ) {
 
   }
@@ -64,7 +67,7 @@ export class HomePage {
     this.productForm = this.formBuilder.group({
       'area': [null, Validators.required],
       'equipo': [null, Validators.required],
-      'fechacuasi': [new Date().toISOString(), Validators.required],
+      'fechacuasi': [this.fechaHoyISO(), Validators.required],
       'describa': [null, Validators.nullValidator],
       'accion': [null, Validators.nullValidator],
       'informo': [null, Validators.nullValidator],
@@ -75,7 +78,30 @@ export class HomePage {
     this.getEquipos();
   }
 
+  fechaHoyISO(): String {
 
+    let date = new Date(); 
+    let myDate: String = new Date(date.getTime() - date.getTimezoneOffset()*60000).toISOString();
+    
+    return myDate; 
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: LocationPage,
+      componentProps: { value: 123 }
+    });
+    return await modal.present();
+  }
+
+  async presentImage() {
+    let image = "assets/img2/layout-ccu.png";
+    const modal = await this.modalController.create({
+      component: ImagePage,
+      componentProps: { value: image }
+    });
+    return await modal.present();
+  }
 
 
   ionViewWillEnter() {
@@ -209,10 +235,11 @@ export class HomePage {
     //this.navCtrl.navigateRoot('/tabs/seccion3' );
     this.localsessionService.area = this.productForm.get("area").value;
     this.localsessionService.equipo = this.productForm.get("equipo").value;
-    this.localsessionService.rut = "13635509-0"
     this.localsessionService.fechacuasi = this.productForm.get("fechacuasi").value;
     this.localsessionService.describa = this.productForm.get("describa").value;
     this.localsessionService.accion = this.productForm.get("accion").value;
+    this.localsessionService.tipotrabajador = this.productForm.get("tipotrabajador").value;
+    this.localsessionService.informo = this.productForm.get("informo").value;
 
     console.log("this.localsessionService.rut :" + this.localsessionService.rut);
     console.log("this.localsessionService.area :" + this.localsessionService.area);

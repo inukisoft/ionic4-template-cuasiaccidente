@@ -12,7 +12,7 @@ export class LocalsessionService {
   describa: string;
   accion: number; 
   informo: number;
-  tipotrabajador: string = "13635509-0"; 
+  tipotrabajador: string = "ccu"; 
 
 
   constructor() { }

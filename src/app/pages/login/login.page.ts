@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { TranslateProvider } from '../../providers';
+import { LocalsessionService } from '../../localsession.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private translate: TranslateProvider,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private localsessionService: LocalsessionService     
   ) { }
 
   ionViewWillEnter() {
@@ -61,6 +63,8 @@ export class LoginPage implements OnInit {
 
   // // //
   goToRegister() {
+    // TODO : Cambiar el campo password por "rut"
+    this.localsessionService.rut = this.onLoginForm.get("password").value
     this.navCtrl.navigateRoot('/register');
   }
 

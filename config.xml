@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="inuki.ccu.cuasiaccidente.starter" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="inuki.ccu.cuasiaccidente.starter" version="0.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Cuasiaccidentes</name>
     <description>App en versión prototipo para el registro de CuasiAccidentes</description>
-    <author email="inukisoft@gmail.com">Inukisoft</author>
+    <author email="totorozilla@gmail.com">Totorozilla</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
