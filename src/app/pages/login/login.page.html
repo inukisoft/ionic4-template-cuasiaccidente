@@ -18,7 +18,7 @@
     </div>
 
     <!-- Login form -->
-    <form [formGroup]="onLoginForm" class="list-form">
+    <form [formGroup]="onLoginForm" class="list-form" (ngSubmit)="submitForm(onLoginForm.value)" >
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="mail" item-start></ion-icon>
@@ -39,7 +39,9 @@
         </ion-label>
         <ion-input color="secondary"  formControlName="password"></ion-input>
       </ion-item>
-      <p ion-text color="danger" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
+      <p ion-text color="danger" class="text08" *ngIf="onLoginForm.get('password').touched &&
+      onLoginForm.get('password').errors && 
+      onLoginForm.get('password').dirty && onLoginForm.get('password').errors.validRut">
         <ion-text color="danger">
           {{ 'app.label.errors.field' | translate }}
         </ion-text>
@@ -53,7 +55,7 @@
     </p>
 
     <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" [disabled]="!onLoginForm.valid" tappable>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" type="submit" [disabled]="!onLoginForm.valid" tappable>
         <ion-icon name="log-in"></ion-icon>
         {{ 'app.button.signin' | translate }}
       </ion-button>

@@ -1,51 +1,44 @@
-import { FormControl, PatternValidator } from '@angular/forms';
-
-export class RutValidator {
+import { FormControl, AbstractControl, PatternValidator } from '@angular/forms';
 
 
- static validarRut(rut:any) {
+    export function ValidateRut(control: AbstractControl) {
+
+        //let rut_pattern = '^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$';
+        //let regex = new RegExp(rut_pattern);
+   
+        console.log("value control :" + control.value);
+
+        if (control.value == null || control.value == "") {
+            console.log("return null, control.value =" + control.value);
+            return { validRut: true} ;
+        }
+
+        if (! /\b\d{1,8}\-[K|k|0-9]/.test(control.value)) {
+            return { validRut: true};
+        }
+
+
+        // ahora validamos el rut
+
+        if (validarRut(control.value)) {
+            console.log("rut válido");
+            
+        } else {
+            console.log("rut no válido");
+            return { validRut : true};
+        }
+ 
+        return null;
+    }
+
+
+  export function validarRut(rut:any) {
 
     let validacion:Boolean = false;
 
     rut =  rut.toUpperCase();       
     rut = rut.replace("-", "");
-    let rutAux:number = Number(rut.substring(0, rut.length() - 1));
+    let rutAux:number = Number(rut.substring(0, rut.length - 1));
 
-    let dv: String = rut.charAt(rut.length() - 1);
-
-    let m: number  = 0;
-    let s: number = 1;
-    
-    for (; rutAux != 0; rutAux /= 10) {
-        s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-    }
-    if (dv == String (s != 0 ? s + 47 : 75)) {
-        validacion = true;
-    }
-    return validacion;
-
-}
-
-    static isValido(): any {
-        return null;
-    }
-
-    static isValid(control: FormControl): any {
-
-        let rut_pattern = '^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$';
-        let regex = new RegExp(rut_pattern);
-
-        if (regex.test(control.value)) {
-            return { "Formato no válido" : true};
-        }
-
-        // ahora validamos el rut
-
-        if (!RutValidator.validarRut(control.value)) {
-            return { "Verificador Inválido " : true};
-        } 
-
-        return null;
-    }
-
+    return true;
 }

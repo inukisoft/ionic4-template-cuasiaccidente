@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { TranslateProvider } from '../../providers';
 import { LocalsessionService } from '../../localsession.service';
+import { ValidateRut } from '../../validators/rut';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController, 
     public menuCtrl: MenuController,
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
@@ -30,14 +31,13 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     document.querySelector('video').play();
 
+
     this.onLoginForm = this.formBuilder.group({
-      'email': [null, Validators.compose([
-        Validators.required
-      ])],
-      'password': [null, Validators.compose([
-        Validators.required
-      ])]
+      'password': [null, [Validators.required, ValidateRut]], 
+      'email': [null, [Validators.required] ] 
+      
     });
+
   }
 
   async forgotPass() {
@@ -67,6 +67,10 @@ export class LoginPage implements OnInit {
     this.localsessionService.rut = this.onLoginForm.get("password").value
     this.navCtrl.navigateRoot('/register');
   }
+  
+  submitForm(value:any) {
+     this.goToHome();
+  } 
 
   goToHome() {
     this.navCtrl.navigateRoot('/home');
